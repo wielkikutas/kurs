@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        JobOfferService jobOfferService = new JobOfferService();
+        JobOfferService offerService = new JobOfferService();
 
         List<JobOffer> jobOffers = new ArrayList<>();
 
@@ -23,9 +23,10 @@ public class Main {
         jobOffers.add(new JobOffer("Warszawa", 30000, 10, skills2));
         jobOffers.add(new JobOffer("Kraków", 15000, 4, skills1));
 
-        JobOffer biggestSalaryOffer = jobOfferService.getBiggestSalary(jobOffers);
-        System.out.println(jobOfferService.countInCity(jobOffers, "Warszawa"));
+        JobOffer biggestSalaryOffer = offerService.getBiggestSalary(jobOffers);
+        long countCities = offerService.countInCity(jobOffers, "Warszawa");
 
+        System.out.println(countCities);
         System.out.println(biggestSalaryOffer.salary);
 
     }

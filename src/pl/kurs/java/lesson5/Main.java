@@ -76,14 +76,14 @@ public class Main {
         friends1.add("Maciek");
         friends1.add("WAcek");
 
-        lesson5.Osoba o1 = new lesson5.Osoba(friends1);
-        lesson5.Osoba o2 = new lesson5.Osoba(friends2);
+        Osoba o1 = new Osoba(friends1);
+        Osoba o2 = new Osoba(friends2);
 
-        List<lesson5.Osoba> osoby = new ArrayList<>();
+        List<Osoba> osoby = new ArrayList<>();
         osoby.add(o1);
         osoby.add(o2);
 
-        for (lesson5.Osoba osoba : osoby) {
+        for (Osoba osoba : osoby) {
             List<String> friends = osoba.friends;
             for (String friend : friends) {
                 if (friend.length()>5){
