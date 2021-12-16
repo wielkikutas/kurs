@@ -1,7 +1,9 @@
 package pl.kurs.java.lesson5.zadanie;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,6 +31,12 @@ public class Main {
         System.out.println(countCities);
         System.out.println(biggestSalaryOffer.salary);
 
+//        Map<String, Integer> myMap = new HashMap<>();
+//        myMap.put("Warszawa", 2000000);
+//        myMap.put("Berlin", 4000000);
+//        myMap.put("Berlin", 5000000);
+//
+//        int berlinPopulation = myMap.get("Berlin");
     }
 }
 
