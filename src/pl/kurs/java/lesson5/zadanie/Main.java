@@ -7,9 +7,14 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
+        JobApplicationService applicationService= new JobApplicationService();
         JobOfferService offerService = new JobOfferService();
-
+        List<JobApplication> jobApplications = new ArrayList<>();
+        jobApplications.add(
+                new JobApplication("dupa",123,"Stalowa","882711559",true,
+                        "zbydniowiak4@gmail.com",0,List.of("Java", "Chuj")));
         List<JobOffer> jobOffers = new ArrayList<>();
+
 
         List<String> skills1 = new ArrayList<>();
         skills1.add("Java");
@@ -17,8 +22,8 @@ public class Main {
         skills1.add("Spring");
 
         List<String> skills2 = new ArrayList<>();
-        skills1.add("Java");
-        skills1.add("Hibernate");
+        skills2.add("Java");
+        skills2.add("Hibernate");
 
         jobOffers.add(new JobOffer("Warszawa", 10000, 4, skills1));
         jobOffers.add(new JobOffer("Rzeszów", 7000, 4, skills2));
@@ -26,10 +31,12 @@ public class Main {
         jobOffers.add(new JobOffer("Kraków", 15000, 4, skills1));
 
         JobOffer biggestSalaryOffer = offerService.getBiggestSalary(jobOffers);
+        Map<String,Integer> cityMap= applicationService.getCitiesCount(jobApplications);
         long countCities = offerService.countInCity(jobOffers, "Warszawa");
 
         System.out.println(countCities);
         System.out.println(biggestSalaryOffer.salary);
+        System.out.println(cityMap);
 
 //        Map<String, Integer> myMap = new HashMap<>();
 //        myMap.put("Warszawa", 2000000);
