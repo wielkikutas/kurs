@@ -11,13 +11,9 @@ public class Zad4 {
             y = ((i % 100) - x) / 10;
             z = ((i % 1000) - y - x) / 100;//cos tu jest zjebaane z tym zetem ale dziaua
             if (y + z == x) {
-
-
                 System.out.println(i);
             }
         }
-
-
     }
 }
 /*  Zadanie 04.
