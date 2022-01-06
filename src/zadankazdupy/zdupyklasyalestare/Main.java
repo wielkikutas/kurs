@@ -1,51 +1,7 @@
-package pl.kurs.java.lesson5.zadanie;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+package zadankazdupy.zdupyklasyalestare;
 
 public class Main {
-    public static void main(String[] args) {
-        JobApplicationService applicationService= new JobApplicationService();
-        JobOfferService offerService = new JobOfferService();
-        List<JobApplication> jobApplications = new ArrayList<>();
-        jobApplications.add(new JobApplication("dupa",123,"Stalowa","882711559",true,
-                        "zbydniowiak4@gmail.com",0,List.of("Java", "Chuj")));
-        List<JobOffer> jobOffers = new ArrayList<>();
-
-
-        List<String> skills1 = new ArrayList<>();
-        skills1.add("Java");
-        skills1.add("MySql");
-        skills1.add("Spring");
-
-        List<String> skills2 = new ArrayList<>();
-        skills2.add("Java");
-        skills2.add("Hibernate");
-
-        jobOffers.add(new JobOffer("Warszawa", 10000, 4, skills1));
-        jobOffers.add(new JobOffer("Rzeszów", 7000, 4, skills2));
-        jobOffers.add(new JobOffer("Warszawa", 30000, 10, skills2));
-        jobOffers.add(new JobOffer("Kraków", 15000, 4, skills1));
-
-        JobOffer biggestSalaryOffer = offerService.getBiggestSalary(jobOffers);
-        Map<String,Integer> cityMap= applicationService.getCitiesCount(jobApplications);
-        long countCities = offerService.countInCity(jobOffers, "Warszawa");
-
-        System.out.println(countCities);
-        System.out.println(biggestSalaryOffer.salary);
-        System.out.println(cityMap);
-
-//        Map<String, Integer> myMap = new HashMap<>();
-//        myMap.put("Warszawa", 2000000);
-//        myMap.put("Berlin", 4000000);
-//        myMap.put("Berlin", 5000000);
-//
-//        int berlinPopulation = myMap.get("Berlin");
-    }
 }
-
 /*
 stworz klase JobOffer ktora będzie miec pola miasto, oferownaa placa, wymagane doświadczneie w latach i zestaw skilli (lista sttringow np: [java, sql, spring])
 stworz klase JobApplication ktora bedzie miec imie, pozadana placa, miasto, nr tele, czy gosc jest chetny na relokacje, email, lata doświadcznenia, i zestaw skilli (lista sttringow np: [java, sql, spring])
