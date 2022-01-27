@@ -15,6 +15,7 @@ public class Kalkulator {
         System.out.println("3.mnożenie");
         System.out.println("4.dzieleni");
         int c = kalkulator.nextInt();
+
         switch (c) {
             case 1:
                 System.out.println("wynik doadawania" + a + b);

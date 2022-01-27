@@ -9,7 +9,7 @@ public class JobApplicationService {
     public Map<String,Integer> getCitiesCount(List<JobApplication> jobApplications){
         Map<String, Integer> cityMap= new HashMap<>();
         for (JobApplication jobApplication : jobApplications) {
-            String city = jobApplication.city;
+            String city = jobApplication.getCity();
             if (cityMap.containsKey(city)){
                 cityMap.put(city, cityMap.get(city)+1);
             }else {
@@ -24,7 +24,7 @@ public class JobApplicationService {
     public Map<String, Long> getEmailsCount(List<JobApplication> jobApplications){
         Map<String, Long> eMailMap = new HashMap<>();
         for (JobApplication jobApplication : jobApplications) {
-            String eMail = jobApplication.eMail;
+            String eMail = jobApplication.geteMail();
             if (eMailMap.containsKey(eMailMap)) {
                 eMailMap.put(eMail, eMailMap.get(eMail) + 1);
             } else {
@@ -33,6 +33,7 @@ public class JobApplicationService {
         }
         return eMailMap;
     }
+
     public String getMostFreqSkill(List<JobApplication> jobApplications){
         for (JobApplication jobApplication : jobApplications) {
             for (JobApplication application : jobApplications) {

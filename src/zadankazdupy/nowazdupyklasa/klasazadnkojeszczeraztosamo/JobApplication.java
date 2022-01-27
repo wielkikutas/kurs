@@ -3,14 +3,47 @@ package zadankazdupy.nowazdupyklasa.klasazadnkojeszczeraztosamo;
 import java.util.List;
 
 public class JobApplication {
-    String name;
-    int salaryExpected;
-    String city;
-    int telehoneNum;
-    boolean relocationPositive;
-    String eMail;
-    int expInYears;
-    List<String> skillsSet;
+    private String name;
+    private int salaryExpected;
+    private String city;
+    private int telehoneNum;
+    private boolean relocationPositive;
+    private String eMail;
+    private int expInYears;
+
+    public String getName() {
+        return name;
+    }
+
+    public int getSalaryExpected() {
+        return salaryExpected;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public int getTelehoneNum() {
+        return telehoneNum;
+    }
+
+    public boolean isRelocationPositive() {
+        return relocationPositive;
+    }
+
+    public String geteMail() {
+        return eMail;
+    }
+
+    public int getExpInYears() {
+        return expInYears;
+    }
+
+    public List<String> getSkillsSet() {
+        return skillsSet;
+    }
+
+    private List<String> skillsSet;
 
     public JobApplication(String name, int salaryExpected, String city, int telehoneNum, boolean relocationPositive, String eMail, int expInYears, List<String> skillsSet) {
         this.name = name;

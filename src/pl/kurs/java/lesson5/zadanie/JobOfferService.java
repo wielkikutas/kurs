@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class JobOfferService {
     public JobOffer getBiggestSalary(List<JobOffer> jobOffers) {
@@ -64,7 +65,7 @@ public class JobOfferService {
             int value = entry.getValue(); // pobeanie warotsci
             if (maxValueEntry == null /*msuimy sprawdzic czy nie jest nullem bo jezeli na nullu wywolasz cokolwiek to sie wyjbie*/
                     || value > maxValueEntry.getValue()) { // sprawdzenie wwarunku czy ta oferta ma lepsza pensje
-                maxValueEntry=entry; // jezeli to entry ma wieksza value to przypisujemy do tego obiektu ktory sluzy nam do porownywania
+                maxValueEntry = entry; // jezeli to entry ma wieksza value to przypisujemy do tego obiektu ktory sluzy nam do porownywania
             }
         }
 
@@ -74,12 +75,56 @@ public class JobOfferService {
         return maxValueEntry.getKey();
     }
 
-//    public JobApplication getBestApplication(List<JobOffer> jobOffers) {
-////        JobOffer getBestApplication = null;
-////        for (JobOffer jobOffer : jobOffers) {
-////
-////
-////        }
-////        return  getBestApplication;
-//    }
+    public JobApplication getBestApplication(JobOffer jobOffer, List<JobApplication> jobApplications) {
+        // filtorujemy i pzopbywamy sie typow lktorzy chca za duzo kasy, nie sa z tego miasta i nie sa chetni na relokacje, lub gdy maja za malo expa
+        // ktroy ma wiecej ppasuajcych skilli
+        // ktory ma wiecej expa
+        // ktroy chce mniej
+        // losowo
+        List<JobApplication> validJobApplications = new ArrayList<>();
+        for (JobApplication jobApplication : jobApplications) {
+            if (jobOffer.salary >= jobApplication.salary
+                    && (jobOffer.city.equals(jobApplication.city) || jobApplication.relocationPositive)
+                    && jobOffer.expReq <= jobApplication.exp) {
+                validJobApplications.add(jobApplication);
+            }
+        }
+
+        JobApplication bestApplication = null;
+        for (JobApplication validJobApplication : validJobApplications) {
+            if (bestApplication == null) {
+                bestApplication = validJobApplication;
+            } else {
+                List<String> reqSkills = jobOffer.skills;
+                List<String> firstApplicationSkills = bestApplication.skills;
+                List<String> secondApplicationSkills = validJobApplication.skills;
+                int firstApplicationSkillsCounter = 0;
+                int secondApplicationSkillsCounter = 0;
+                for (String reqSkill : reqSkills) {
+                    if (firstApplicationSkills.contains(reqSkill)) {
+                        firstApplicationSkillsCounter++;
+                    }
+                    if (secondApplicationSkills.contains(reqSkill)) {
+                        secondApplicationSkillsCounter++;
+                    }
+                }
+                if (firstApplicationSkillsCounter < secondApplicationSkillsCounter) {
+                    bestApplication = validJobApplication;
+                } else if (firstApplicationSkillsCounter == secondApplicationSkillsCounter) {
+                    if (bestApplication.exp < validJobApplication.exp) {
+                        bestApplication = validJobApplication;
+                    } else if (bestApplication.exp == validJobApplication.exp) {
+                        if (bestApplication.salary > validJobApplication.salary){
+                            bestApplication = validJobApplication;
+                        } else if (bestApplication.salary == validJobApplication.salary) {
+                            if (ThreadLocalRandom.current().nextBoolean()) {
+                                bestApplication = validJobApplication;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return bestApplication;
+    }
 }

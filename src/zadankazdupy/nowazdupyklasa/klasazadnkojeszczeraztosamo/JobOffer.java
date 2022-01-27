@@ -4,16 +4,42 @@ import javax.swing.*;
 import java.util.List;
 
 public class JobOffer {
-    String city;
-    int salary;
-    int expRequired;
-    List<String> skills;
+    private String city;
+    private int salary;
+    private int expRequired;
+    private List<String> skills;
+
+    public String getCity() {
+        return city;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public int getExpRequired() {
+        return expRequired;
+    }
+
+    public List<String> getSkills() {
+        return skills;
+    }
 
     public JobOffer(String city, int salary, int expRequired, List<String> skills) {
         this.city = city;
         this.salary = salary;
         this.expRequired = expRequired;
         this.skills = skills;
+    }
+
+    @Override
+    public String toString() {
+        return "JobOffer{" +
+                "city='" + city + '\'' +
+                ", salary=" + salary +
+                ", expRequired=" + expRequired +
+                ", skills=" + skills +
+                '}';
     }
 }
 /*
