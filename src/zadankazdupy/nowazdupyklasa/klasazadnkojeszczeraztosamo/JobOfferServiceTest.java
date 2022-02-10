@@ -101,4 +101,24 @@ class JobOfferServiceTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void getAverageMinExpTest(){
+        //given
+        double expected=5.5;
+
+        //when
+        double actual= jobOfferService.getAverageMinExp(jobOffers);
+        //then
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public  void getMostPopularSkillTest(){
+        //given
+        String expected = "Java";
+        //when
+        String actual = jobOfferService.getMostPopularSkill(jobOffers);
+        //then
+        Assertions.assertEquals(expected,actual);
+    }
 }

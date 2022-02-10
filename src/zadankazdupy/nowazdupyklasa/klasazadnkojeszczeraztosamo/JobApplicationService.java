@@ -25,7 +25,7 @@ public class JobApplicationService {
         Map<String, Long> eMailMap = new HashMap<>();
         for (JobApplication jobApplication : jobApplications) {
             String eMail = jobApplication.geteMail();
-            if (eMailMap.containsKey(eMailMap)) {
+            if (eMailMap.containsKey(eMail)) {
                 eMailMap.put(eMail, eMailMap.get(eMail) + 1);
             } else {
                 eMailMap.put(eMail, 1L);
