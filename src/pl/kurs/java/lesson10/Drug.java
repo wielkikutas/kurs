@@ -29,6 +29,16 @@ public class Drug {
     public double getQualityPercent() {
         return qualityPercent;
     }
+
+    @Override
+    public String toString() {
+        return "Drug{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", weight=" + weight +
+                ", qualityPercent=" + qualityPercent +
+                '}';
+    }
 }
 /*
 
