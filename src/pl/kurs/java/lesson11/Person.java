@@ -1,8 +1,8 @@
 package pl.kurs.java.lesson11;
 
 public class Person {
-    private String surname;
     private String name;
+    private String surname;
     private String city;
     private int age;
 
@@ -22,9 +22,9 @@ public class Person {
         return age;
     }
 
-    public Person(String surname, String name, String city, int age) {
-        this.surname = surname;
+    public Person(String name, String surname, String city, int age) {
         this.name = name;
+        this.surname = surname;
         this.city = city;
         this.age = age;
     }

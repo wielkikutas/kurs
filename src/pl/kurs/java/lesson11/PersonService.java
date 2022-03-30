@@ -34,13 +34,16 @@ public class PersonService {
     }
 
     public double getMeanOfWoMenAge(List<Person> personList) {
-        int sum = 0;
+        double sum = 0;
         int counterForWomen = 0;
         for (Person person : personList) {
             if (person.getName().endsWith("a")) {
                 counterForWomen++;
                 sum += person.getAge();
             }
+        }
+        if (counterForWomen == 0) {
+            return 0;
         }
         return sum / counterForWomen;
     }
@@ -51,10 +54,9 @@ public class PersonService {
         for (Person person : personList) {
             if (gender.equalsIgnoreCase("men")) {
 
-            } else  {
+            } else {
 
             }
-
 
 
             if (person.getName().endsWith("a")) {
